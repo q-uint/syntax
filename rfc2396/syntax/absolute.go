@@ -1,8 +1,8 @@
 package syntax
 
-import . "github.com/di-wu/abnf"
+import . "github.com/elimity-com/abnf/operators"
 
-func absoluteURI(s []rune) *AST {
+func absoluteURI(s []rune) Alternatives {
 	return Concat(`absoluteURI`,
 		scheme,
 		Rune(`:`, ':'),
@@ -13,7 +13,7 @@ func absoluteURI(s []rune) *AST {
 	)(s)
 }
 
-func hierPart(s []rune) *AST {
+func hierPart(s []rune) Alternatives {
 	return Concat(`hier_part`,
 		Alts(`net_path | abs_path`,
 			netPath,
@@ -28,29 +28,29 @@ func hierPart(s []rune) *AST {
 	)(s)
 }
 
-func netPath(s []rune) *AST {
+func netPath(s []rune) Alternatives {
 	return Concat(`net_path`,
-		String(`//`, "//", false),
+		String(`//`, "//"),
 		authority,
 		Optional(`[ abs_path ]`, absPath),
 	)(s)
 }
 
-func absPath(s []rune) *AST {
+func absPath(s []rune) Alternatives {
 	return Concat(`abs_path`,
 		Rune(`/`, '/'),
 		pathSegments,
 	)(s)
 }
 
-func opaquePart(s []rune) *AST {
+func opaquePart(s []rune) Alternatives {
 	return Concat(`opaque_part`,
 		uricNoSlash,
 		Repeat0Inf(`*uric`, uric),
 	)(s)
 }
 
-func uricNoSlash(s []rune) *AST {
+func uricNoSlash(s []rune) Alternatives {
 	return Alts(`uric_no_slash`,
 		unreserved,
 		escaped,

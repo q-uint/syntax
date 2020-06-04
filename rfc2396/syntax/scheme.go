@@ -1,8 +1,8 @@
 package syntax
 
-import . "github.com/di-wu/abnf"
+import . "github.com/elimity-com/abnf/operators"
 
-func scheme(s []rune) *AST {
+func scheme(s []rune) Alternatives {
 	return Concat(`scheme`,
 		alpha,
 		Repeat0Inf(`*( alpha | digit | "+" | "-" | "." )`,

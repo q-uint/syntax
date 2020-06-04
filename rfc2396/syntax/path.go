@@ -1,8 +1,8 @@
 package syntax
 
-import . "github.com/di-wu/abnf"
+import . "github.com/elimity-com/abnf/operators"
 
-func path(s []rune) *AST {
+func path(s []rune) Alternatives {
 	return Optional(`path`,
 		Alts(`abs_path | opaque_part`,
 			absPath,
@@ -11,7 +11,7 @@ func path(s []rune) *AST {
 	)(s)
 }
 
-func pathSegments(s []rune) *AST {
+func pathSegments(s []rune) Alternatives {
 	return Concat(`path_segments`,
 		segment,
 		Repeat0Inf(`*( "/" segment )`,
@@ -23,7 +23,7 @@ func pathSegments(s []rune) *AST {
 	)(s)
 }
 
-func segment(s []rune) *AST {
+func segment(s []rune) Alternatives {
 	return Concat(`segment`,
 		Repeat0Inf(`*pchar`,
 			pchar,
@@ -37,13 +37,13 @@ func segment(s []rune) *AST {
 	)(s)
 }
 
-func param(s []rune) *AST {
+func param(s []rune) Alternatives {
 	return Repeat0Inf(`param`,
 		pchar,
 	)(s)
 }
 
-func pchar(s []rune) *AST {
+func pchar(s []rune) Alternatives {
 	return Alts(`pchar`,
 		unreserved,
 		escaped,

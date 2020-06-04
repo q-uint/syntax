@@ -1,8 +1,8 @@
 package syntax
 
-import . "github.com/di-wu/abnf"
+import . "github.com/elimity-com/abnf/operators"
 
-func query(s []rune) *AST {
+func query(s []rune) Alternatives {
 	return Repeat0Inf(`query`,
 		uric,
 	)(s)

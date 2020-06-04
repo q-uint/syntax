@@ -1,6 +1,6 @@
 package syntax
 
-import . "github.com/di-wu/abnf"
+import . "github.com/elimity-com/abnf/operators"
 
 var (
 	// URI Characters and Escape Sequences

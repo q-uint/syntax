@@ -1,15 +1,15 @@
 package syntax
 
-import . "github.com/di-wu/abnf"
+import . "github.com/elimity-com/abnf/operators"
 
-func authority(s []rune) *AST {
+func authority(s []rune) Alternatives {
 	return Alts(`authority`,
 		server,
 		regName,
 	)(s)
 }
 
-func regName(s []rune) *AST {
+func regName(s []rune) Alternatives {
 	return Repeat1Inf(`reg_name`,
 		Alts(`unreserved | escaped | "$" | "," | ";" | ":" | "@" | "&" | "=" | "+"`,
 			unreserved,
@@ -26,7 +26,7 @@ func regName(s []rune) *AST {
 	)(s)
 }
 
-func server(s []rune) *AST {
+func server(s []rune) Alternatives {
 	return Optional(`server`,
 		Concat(`[ userinfo "@" ] hostport`,
 			Optional(`[ userinfo "@" ]`,
@@ -40,7 +40,7 @@ func server(s []rune) *AST {
 	)(s)
 }
 
-func userinfo(s []rune) *AST {
+func userinfo(s []rune) Alternatives {
 	return Repeat1Inf(`userinfo`,
 		Alts(`unreserved | escaped | ";" | ":" | "&" | "=" | "+" | "$" | ","`,
 			unreserved,
@@ -56,7 +56,7 @@ func userinfo(s []rune) *AST {
 	)(s)
 }
 
-func hostport(s []rune) *AST {
+func hostport(s []rune) Alternatives {
 	return Concat(`hostport`,
 		host,
 		Optional(`[ ":" port ]`,
@@ -68,14 +68,14 @@ func hostport(s []rune) *AST {
 	)(s)
 }
 
-func host(s []rune) *AST {
+func host(s []rune) Alternatives {
 	return Alts(`host`,
 		hostname,
 		iPv4address,
 	)(s)
 }
 
-func hostname(s []rune) *AST {
+func hostname(s []rune) Alternatives {
 	return Concat(`hostname`,
 		Repeat0Inf(`*( domainlabel "." )`,
 			Concat(`domainlabel "."`,
@@ -88,7 +88,7 @@ func hostname(s []rune) *AST {
 	)(s)
 }
 
-func domainlabel(s []rune) *AST {
+func domainlabel(s []rune) Alternatives {
 	return Alts(`domainlabel`,
 		alphanum,
 		Concat(`alphanum *( alphanum | "-" ) alphanum`,
@@ -104,7 +104,7 @@ func domainlabel(s []rune) *AST {
 	)(s)
 }
 
-func toplabel(s []rune) *AST {
+func toplabel(s []rune) Alternatives {
 	return Alts(`toplabel`,
 		alpha,
 		Concat(`alpha *( alphanum | "-" ) alphanum`,
@@ -120,7 +120,7 @@ func toplabel(s []rune) *AST {
 	)(s)
 }
 
-func iPv4address(s []rune) *AST {
+func iPv4address(s []rune) Alternatives {
 	return Concat(`IPv4address`,
 		Repeat1Inf(`1*digit`, digit),
 		Rune(`.`, '.'),
@@ -132,6 +132,6 @@ func iPv4address(s []rune) *AST {
 	)(s)
 }
 
-func port(s []rune) *AST {
+func port(s []rune) Alternatives {
 	return Repeat0Inf(`*digit`, digit)(s)
 }

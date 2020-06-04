@@ -1,8 +1,8 @@
 package syntax
 
-import . "github.com/di-wu/abnf"
+import . "github.com/elimity-com/abnf/operators"
 
-func relativeURI(s []rune) *AST {
+func relativeURI(s []rune) Alternatives {
 	return Concat(`relativeURI`,
 		Alts(`net_path | abs_path | rel_path`,
 			netPath,
@@ -18,7 +18,7 @@ func relativeURI(s []rune) *AST {
 	)(s)
 }
 
-func relPath(s []rune) *AST {
+func relPath(s []rune) Alternatives {
 	return Concat(`rel_path`,
 		relSegment,
 		Optional(`[ abs_path ]`,
@@ -27,7 +27,7 @@ func relPath(s []rune) *AST {
 	)(s)
 }
 
-func relSegment(s []rune) *AST {
+func relSegment(s []rune) Alternatives {
 	return Repeat1Inf(`rel_segment`,
 		Alts(`unreserved | escaped | ";" | "@" | "&" | "=" | "+" | "$" | ","`,
 			unreserved,
