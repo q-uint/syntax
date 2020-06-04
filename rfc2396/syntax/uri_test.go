@@ -15,16 +15,16 @@ func TestExampleURI(t *testing.T) {
 		}
 
 		if scheme := tree.GetSubNode("scheme").String(); scheme != "ftp" {
-			t.Errorf("did not get correct ftp scheme: %s", scheme)
+			t.Errorf("did not get the correct ftp scheme: %s", scheme)
 		}
 
 		if authority := tree.GetSubNode("authority").String(); authority != "ftp.is.co.za" {
-			t.Errorf("did not get correct authority: %s", authority)
+			t.Errorf("did not get the correct authority: %s", authority)
 		}
 
 		abs := tree.GetSubNode("abs_path")
 		if abs.String() != "/rfc/rfc1808.txt" {
-			t.Errorf("did not get correct absolute path: %s", abs)
+			t.Errorf("did not get the correct absolute path: %s", abs)
 		}
 
 		segments := abs.GetSubNodes("segment")
@@ -51,16 +51,16 @@ func TestExampleURI(t *testing.T) {
 		}
 
 		if scheme := tree.GetSubNode("scheme").String(); scheme != "gopher" {
-			t.Errorf("did not get correct gopher scheme: %s", scheme)
+			t.Errorf("did not get the correct gopher scheme: %s", scheme)
 		}
 
 		if authority := tree.GetSubNode("authority").String(); authority != "spinaltap.micro.umn.edu" {
-			t.Errorf("did not get correct authority: %s", authority)
+			t.Errorf("did not get the correct authority: %s", authority)
 		}
 
 		abs := tree.GetSubNode("abs_path")
 		if abs.String() != "/00/Weather/California/Los%20Angeles" {
-			t.Errorf("did not get correct absolute path: %s", abs)
+			t.Errorf("did not get the correct absolute path: %s", abs)
 		}
 
 		segments := abs.GetSubNodes("segment")
@@ -95,16 +95,16 @@ func TestExampleURI(t *testing.T) {
 		}
 
 		if scheme := tree.GetSubNode("scheme").String(); scheme != "http" {
-			t.Errorf("did not get correct http scheme: %s", scheme)
+			t.Errorf("did not get the correct http scheme: %s", scheme)
 		}
 
 		if authority := tree.GetSubNode("authority").String(); authority != "www.math.uio.no" {
-			t.Errorf("did not get correct authority: %s", authority)
+			t.Errorf("did not get the correct authority: %s", authority)
 		}
 
 		abs := tree.GetSubNode("abs_path")
 		if abs.String() != "/faq/compression-faq/part1.html" {
-			t.Errorf("did not get correct absolute path: %s", abs)
+			t.Errorf("did not get the correct absolute path: %s", abs)
 		}
 
 		segments := abs.GetSubNodes("segment")
@@ -135,7 +135,7 @@ func TestExampleURI(t *testing.T) {
 		}
 
 		if scheme := tree.GetSubNode("scheme").String(); scheme != "mailto" {
-			t.Errorf("did not get correct mailto scheme: %s", scheme)
+			t.Errorf("did not get the correct mailto scheme: %s", scheme)
 		}
 
 		if s := tree.GetSubNode("opaque_part").String(); s != "mduerst@ifi.unizh.ch" {
@@ -152,7 +152,7 @@ func TestExampleURI(t *testing.T) {
 		}
 
 		if scheme := tree.GetSubNode("scheme").String(); scheme != "news" {
-			t.Errorf("did not get correct news scheme: %s", scheme)
+			t.Errorf("did not get the correct news scheme: %s", scheme)
 		}
 
 		if s := tree.GetSubNode("opaque_part").String(); s != "comp.infosystems.www.servers.unix" {
@@ -169,16 +169,16 @@ func TestExampleURI(t *testing.T) {
 		}
 
 		if scheme := tree.GetSubNode("scheme").String(); scheme != "telnet" {
-			t.Errorf("did not get correct telnet scheme: %s", scheme)
+			t.Errorf("did not get the correct telnet scheme: %s", scheme)
 		}
 
 		if authority := tree.GetSubNode("authority").String(); authority != "melvyl.ucop.edu" {
-			t.Errorf("did not get correct authority: %s", authority)
+			t.Errorf("did not get the correct authority: %s", authority)
 		}
 
 		abs := tree.GetSubNode("abs_path")
 		if abs.String() != "/" {
-			t.Errorf("did not get correct absolute path: %s", abs)
+			t.Errorf("did not get the correct absolute path: %s", abs)
 		}
 
 		segments := abs.GetSubNodes("segment")
