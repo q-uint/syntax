@@ -1,3 +1,7 @@
+github.com/dave/jennifer v1.4.0 h1:tNJFJmLDVTLu+v05mVZ88RINa3vQqnyyWkTKWYz0CwE=
+github.com/dave/jennifer v1.4.0/go.mod h1:fIb+770HOpJ2fmN9EPPKOqm1vMGhB+TwXKMZhrIygKg=
 github.com/di-wu/regen v0.0.0-20191224153906-041b1bce4065/go.mod h1:1AGOmC2ExxkWjWb7bQNwFD2+0PxttZRYlLeUayrARus=
 github.com/elimity-com/abnf v0.0.0-20200604095209-4af5a0cb72bc h1:3uTMC6os7MPsRA2hE2/3N6FHkPHnE2u8EXy517/JDu4=
 github.com/elimity-com/abnf v0.0.0-20200604095209-4af5a0cb72bc/go.mod h1:OwOOwxDYNG6j5bIGZAW4g2qaLbuMP4sfvnDXl6isXJg=
+github.com/elimity-com/abnf v0.0.0-20200610162259-f4f72320089d h1:7Vw1fWQGgXardcA/dxGwUW7C64e8FUZSnOAfEoGyKdM=
+github.com/elimity-com/abnf v0.0.0-20200610162259-f4f72320089d/go.mod h1:m9PMRXUOzfswN/mctCqWk1HBxsrXV8cHQese1L9cpBQ=

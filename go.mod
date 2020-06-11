@@ -1,5 +1,5 @@
-module github.com/di-wu/uri
+module github.com/di-wu/syntax
 
 go 1.14
 
-require github.com/elimity-com/abnf v0.0.0-20200604095209-4af5a0cb72bc
+require github.com/elimity-com/abnf v0.0.0-20200610162259-f4f72320089d
