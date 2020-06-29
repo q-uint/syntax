@@ -8,6 +8,8 @@ github.com/elimity-com/abnf v0.0.0-20200627140532-95a4ea955452 h1:vuZlitUNFesXnD
 github.com/elimity-com/abnf v0.0.0-20200627140532-95a4ea955452/go.mod h1:mRss6TJGX0tUK3SpSE7hLBxlAPzqvBbrBLk/9ApnmME=
 github.com/elimity-com/abnf v0.0.0-20200629113109-dfc3b6d5edf0 h1:lNR5WgBFHnnn63leLCGt3tj4Vo5Qn1iQk66mM/ZcmNU=
 github.com/elimity-com/abnf v0.0.0-20200629113109-dfc3b6d5edf0/go.mod h1:mRss6TJGX0tUK3SpSE7hLBxlAPzqvBbrBLk/9ApnmME=
+github.com/elimity-com/abnf v0.0.0-20200629115103-a0ffb9d8ab11 h1:Sem8QU8H5NreBRNudj8DTX5zkInxA6TYsGpExzAYzZ4=
+github.com/elimity-com/abnf v0.0.0-20200629115103-a0ffb9d8ab11/go.mod h1:mRss6TJGX0tUK3SpSE7hLBxlAPzqvBbrBLk/9ApnmME=
 golang.org/x/text v0.3.3 h1:cokOdA+Jmi5PJGXLlLllQSgYigAEfHXJAERHVMaCc2k=
 golang.org/x/text v0.3.3/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
 golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
