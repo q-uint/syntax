@@ -78,8 +78,3 @@ reserved      = gen-delims / sub-delims
 gen-delims    = ":" / "/" / "?" / "#" / "[" / "]" / "@"
 sub-delims    = "!" / "$" / "&" / "'" / "(" / ")"
               / "*" / "+" / "," / ";" / "="
-
-ALPHA         =  %x41-5A / %x61-7A
-DIGIT         =  %x30-39
-HEXDIG        =  DIGIT / "A" / "B" / "C" / "D" / "E" / "F"
-              / "a" / "b" / "c" / "d" / "e" / "f"

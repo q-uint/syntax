@@ -9,7 +9,7 @@ func TestExampleURI(t *testing.T) {
 	// ftp scheme for File Transfer Protocol services
 	t.Run("ftp", func(t *testing.T) {
 		ftp := "ftp://ftp.is.co.za/rfc/rfc1808.txt"
-		tree := AbsoluteURI([]rune(ftp)).Best()
+		tree := AbsoluteURI([]byte(ftp)).Best()
 		if tree.String() != ftp {
 			t.Error("could not parse string")
 		}
@@ -45,7 +45,7 @@ func TestExampleURI(t *testing.T) {
 	// gopher scheme for Gopher and Gopher+ Protocol services
 	t.Run("gopher", func(t *testing.T) {
 		gopher := "gopher://spinaltap.micro.umn.edu/00/Weather/California/Los%20Angeles"
-		tree := AbsoluteURI([]rune(gopher)).Best()
+		tree := AbsoluteURI([]byte(gopher)).Best()
 		if tree.String() != gopher {
 			t.Error("could not parse string")
 		}
@@ -89,7 +89,7 @@ func TestExampleURI(t *testing.T) {
 	// http scheme for Hypertext Transfer Protocol services
 	t.Run("http", func(t *testing.T) {
 		http := "http://www.math.uio.no/faq/compression-faq/part1.html"
-		tree := AbsoluteURI([]rune(http)).Best()
+		tree := AbsoluteURI([]byte(http)).Best()
 		if tree.String() != http {
 			t.Error("could not parse string")
 		}
@@ -129,7 +129,7 @@ func TestExampleURI(t *testing.T) {
 	// mailto scheme for electronic mail addresses
 	t.Run("mailto", func(t *testing.T) {
 		mailto := "mailto:mduerst@ifi.unizh.ch"
-		tree := AbsoluteURI([]rune(mailto)).Best()
+		tree := AbsoluteURI([]byte(mailto)).Best()
 		if tree.String() != mailto {
 			t.Error("could not parse string")
 		}
@@ -146,7 +146,7 @@ func TestExampleURI(t *testing.T) {
 	// news scheme for USENET news groups and articles
 	t.Run("news", func(t *testing.T) {
 		news := "news:comp.infosystems.www.servers.unix"
-		tree := AbsoluteURI([]rune(news)).Best()
+		tree := AbsoluteURI([]byte(news)).Best()
 		if tree.String() != news {
 			t.Error("could not parse string")
 		}
@@ -163,7 +163,7 @@ func TestExampleURI(t *testing.T) {
 	// telnet scheme for interactive services via the TELNET Protocol
 	t.Run("telnet", func(t *testing.T) {
 		telnet := "telnet://melvyl.ucop.edu/"
-		tree := AbsoluteURI([]rune(telnet)).Best()
+		tree := AbsoluteURI([]byte(telnet)).Best()
 		if tree.String() != telnet {
 			t.Error("could not parse string")
 		}

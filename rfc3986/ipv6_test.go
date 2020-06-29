@@ -17,7 +17,7 @@ func TestIPv6Examples(t *testing.T) {
 		"2001:DB8:0:0:1::1",
 	} {
 		t.Run(address, func(t *testing.T) {
-			a := IPv6address([]rune(address)).Best()
+			a := IPv6address([]byte(address)).Best()
 			if a == nil {
 				t.Error("could not parse IPv6 address")
 				return

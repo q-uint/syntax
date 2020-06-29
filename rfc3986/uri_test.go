@@ -8,7 +8,7 @@ import (
 func TestExampleURI(t *testing.T) {
 	t.Run("ftp", func(t *testing.T) {
 		ftp := "ftp://ftp.is.co.za/rfc/rfc1808.txt"
-		tree := AbsoluteURI([]rune(ftp)).Best()
+		tree := AbsoluteURI([]byte(ftp)).Best()
 		if tree.String() != ftp {
 			t.Error("could not parse string")
 		}
@@ -43,7 +43,7 @@ func TestExampleURI(t *testing.T) {
 
 	t.Run("http", func(t *testing.T) {
 		http := "http://www.ietf.org/rfc/rfc2396.txt"
-		tree := AbsoluteURI([]rune(http)).Best()
+		tree := AbsoluteURI([]byte(http)).Best()
 		if tree.String() != http {
 			t.Error("could not parse string")
 		}
@@ -78,7 +78,7 @@ func TestExampleURI(t *testing.T) {
 
 	t.Run("ldap", func(t *testing.T) {
 		ldap := "ldap://[2001:db8::7]/c=GB?objectClass?one"
-		tree := AbsoluteURI([]rune(ldap)).Best()
+		tree := AbsoluteURI([]byte(ldap)).Best()
 		if tree.String() != ldap {
 			t.Error("could not parse string")
 		}
@@ -114,7 +114,7 @@ func TestExampleURI(t *testing.T) {
 
 	t.Run("mailto", func(t *testing.T) {
 		mailto := "mailto:John.Doe@example.com"
-		tree := AbsoluteURI([]rune(mailto)).Best()
+		tree := AbsoluteURI([]byte(mailto)).Best()
 		if tree.String() != mailto {
 			t.Error("could not parse string")
 		}
@@ -130,7 +130,7 @@ func TestExampleURI(t *testing.T) {
 	
 	t.Run("news", func(t *testing.T) {
 		news := "news:comp.infosystems.www.servers.unix"
-		tree := AbsoluteURI([]rune(news)).Best()
+		tree := AbsoluteURI([]byte(news)).Best()
 		if tree.String() != news {
 			t.Error("could not parse string")
 		}
@@ -147,7 +147,7 @@ func TestExampleURI(t *testing.T) {
 
 	t.Run("tel", func(t *testing.T) {
 		tel := "tel:+1-816-555-1212"
-		tree := AbsoluteURI([]rune(tel)).Best()
+		tree := AbsoluteURI([]byte(tel)).Best()
 		if tree.String() != tel {
 			t.Error("could not parse string")
 		}
@@ -163,7 +163,7 @@ func TestExampleURI(t *testing.T) {
 
 	t.Run("telnet", func(t *testing.T) {
 		telnet := "telnet://192.0.2.16:80/"
-		tree := AbsoluteURI([]rune(telnet)).Best()
+		tree := AbsoluteURI([]byte(telnet)).Best()
 		if tree.String() != telnet {
 			t.Error("could not parse string")
 		}
@@ -188,7 +188,7 @@ func TestExampleURI(t *testing.T) {
 
 	t.Run("urn", func(t *testing.T) {
 		urn := "urn:oasis:names:specification:docbook:dtd:xml:4.1.2"
-		tree := AbsoluteURI([]rune(urn)).Best()
+		tree := AbsoluteURI([]byte(urn)).Best()
 		if tree.String() != urn {
 			t.Error("could not parse string")
 		}
