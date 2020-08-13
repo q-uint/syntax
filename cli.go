@@ -49,7 +49,7 @@ var (
 			"DIGIT":  corePkg,
 			"HEXDIG": corePkg,
 		},
-		7159: {
+		8259: {
 			"DIGIT":  corePkg,
 			"HEXDIG": corePkg,
 		},
