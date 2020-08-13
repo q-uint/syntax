@@ -1,4 +1,4 @@
-package syntax
+package rfc2396
 
 import (
 	"testing"

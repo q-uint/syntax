@@ -19,7 +19,7 @@ func main() {
 	}
 
 	g := abnf.CodeGenerator{
-		PackageName: "syntax",
+		PackageName: fmt.Sprintf("rfc%d", *rfcNumber),
 		RawABNF:     raw,
 	}
 

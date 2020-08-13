@@ -1,4 +1,4 @@
-package syntax
+package rfc3986
 
 import (
 	"testing"

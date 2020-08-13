@@ -1,6 +1,6 @@
 // This file is generated - do not edit.
 
-package syntax
+package rfc3986
 
 import (
 	core "github.com/elimity-com/abnf/core"
@@ -41,7 +41,7 @@ func IPv6address(s []byte) operators.Alternatives {
 		"IPv6address",
 		operators.Concat(
 			"6( h16 \":\" ) ls32",
-			operators.Repeat0Inf("6( h16 \":\" )", operators.Concat(
+			operators.RepeatN("6( h16 \":\" )", 6, operators.Concat(
 				"h16 \":\"",
 				H16,
 				operators.String(":", ":"),
@@ -51,7 +51,7 @@ func IPv6address(s []byte) operators.Alternatives {
 		operators.Concat(
 			"\"::\" 5( h16 \":\" ) ls32",
 			operators.String("::", "::"),
-			operators.Repeat0Inf("5( h16 \":\" )", operators.Concat(
+			operators.RepeatN("5( h16 \":\" )", 5, operators.Concat(
 				"h16 \":\"",
 				H16,
 				operators.String(":", ":"),
@@ -62,7 +62,7 @@ func IPv6address(s []byte) operators.Alternatives {
 			"[ h16 ] \"::\" 4( h16 \":\" ) ls32",
 			operators.Optional("[ h16 ]", H16),
 			operators.String("::", "::"),
-			operators.Repeat0Inf("4( h16 \":\" )", operators.Concat(
+			operators.RepeatN("4( h16 \":\" )", 4, operators.Concat(
 				"h16 \":\"",
 				H16,
 				operators.String(":", ":"),
@@ -81,7 +81,7 @@ func IPv6address(s []byte) operators.Alternatives {
 				H16,
 			)),
 			operators.String("::", "::"),
-			operators.Repeat0Inf("3( h16 \":\" )", operators.Concat(
+			operators.RepeatN("3( h16 \":\" )", 3, operators.Concat(
 				"h16 \":\"",
 				H16,
 				operators.String(":", ":"),
@@ -100,7 +100,7 @@ func IPv6address(s []byte) operators.Alternatives {
 				H16,
 			)),
 			operators.String("::", "::"),
-			operators.Repeat0Inf("2( h16 \":\" )", operators.Concat(
+			operators.RepeatN("2( h16 \":\" )", 2, operators.Concat(
 				"h16 \":\"",
 				H16,
 				operators.String(":", ":"),
@@ -258,7 +258,7 @@ func DecOctet(s []byte) operators.Alternatives {
 		operators.Concat(
 			"\"1\" 2DIGIT",
 			operators.String("1", "1"),
-			operators.Repeat0Inf("2DIGIT", core.DIGIT()),
+			operators.RepeatN("2DIGIT", 2, core.DIGIT()),
 		),
 		operators.Concat(
 			"\"2\" %x30-34 DIGIT",
@@ -383,7 +383,7 @@ func PathAbsolute(s []byte) operators.Alternatives {
 
 // path-empty = 0pchar
 func PathEmpty(s []byte) operators.Alternatives {
-	return operators.Repeat0Inf("path-empty", Pchar)(s)
+	return operators.RepeatN("path-empty", 0, Pchar)(s)
 }
 
 // path-noscheme = segment-nz-nc *( "/" segment )

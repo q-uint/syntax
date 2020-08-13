@@ -1,6 +1,6 @@
 // This file is generated - do not edit.
 
-package syntax
+package rfc2396
 
 import "github.com/elimity-com/abnf/operators"
 

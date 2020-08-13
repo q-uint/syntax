@@ -1,4 +1,4 @@
-package syntax
+package rfc8259
 
 import (
 	"testing"

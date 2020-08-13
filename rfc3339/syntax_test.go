@@ -1,4 +1,4 @@
-package syntax
+package rfc3339
 
 import "testing"
 

@@ -1,6 +1,6 @@
 // This file is generated - do not edit.
 
-package syntax
+package rfc3339
 
 import (
 	core "github.com/elimity-com/abnf/core"
