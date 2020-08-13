@@ -1,0 +1,7 @@
+; SOURCE: https://tools.ietf.org/html/rfc3339#appendix-A
+
+period-explicit   = iso-date-time "/" iso-date-time
+period-start      = iso-date-time "/" duration
+period-end        = duration "/" iso-date-time
+
+period            = period-explicit / period-start / period-end

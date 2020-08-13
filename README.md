@@ -7,6 +7,8 @@ Contains auto-generated ABNF parsers w/ tests.
 - [RFC7159](https://tools.ietf.org/html/rfc7159) /
   [RFC8259](https://tools.ietf.org/html/rfc8259): The JavaScript Object Notation (JSON) Data Interchange Format
 
+- [ISO6801](https://tools.ietf.org/html/rfc3339#appendix-A): ISO 8601 Collected ABNF (! based on the 1988 version)
+
 ## Validation
 ```go
 import "github.com/di-wu/syntax/rfc3339"
@@ -14,4 +16,13 @@ import "github.com/di-wu/syntax/rfc3339"
 if !IsValid(rfc3339.DateTime, "1985-04-12T23:20:50.52Z") {
     // date time is not valid
 }
+```
+
+##### CLI
+```shell script
+go run cli.go -rfc="3339"
+```
+
+```shell script
+go run cli.go -in="./abnf/iso8601_date.abnf" -out="./iso8601/date.go" -pkg="iso68601" -core="DIGIT"  
 ```

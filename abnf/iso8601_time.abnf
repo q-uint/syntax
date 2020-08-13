@@ -1,0 +1,21 @@
+; SOURCE: https://tools.ietf.org/html/rfc3339#appendix-A
+
+time-hour         = 2DIGIT ; 00-24
+time-minute       = 2DIGIT ; 00-59
+time-second       = 2DIGIT ; 00-58, 00-59, 00-60 based on
+                           ; leap-second rules
+time-fraction     = ("," / ".") 1*DIGIT
+time-numoffset    = ("+" / "-") time-hour [[":"] time-minute]
+time-zone         = "Z" / time-numoffset
+
+timeopt-hour      = "-" / (time-hour [":"])
+timeopt-minute    = "-" / (time-minute [":"])
+
+timespec-hour     = time-hour [[":"] time-minute [[":"] time-second]]
+timespec-minute   = timeopt-hour time-minute [[":"] time-second]
+timespec-second   = "-" timeopt-minute time-second
+timespec-base     = timespec-hour / timespec-minute / timespec-second
+
+time              = timespec-base [time-fraction] [time-zone]
+
+iso-date-time     = date "T" time
