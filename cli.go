@@ -44,6 +44,9 @@ var (
 	}
 
 	dependencies = map[int]map[string]abnf.ExternalABNF{
+		3339: {
+			"DIGIT": corePkg,
+		},
 		3986: {
 			"ALPHA":  corePkg,
 			"DIGIT":  corePkg,

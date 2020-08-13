@@ -5,6 +5,7 @@ import (
 )
 
 func TestExamples(t *testing.T) {
+	// https://tools.ietf.org/html/rfc8259#section-13
 	for _, test := range [][]byte{
 		[]byte(`{
         "Image": {
