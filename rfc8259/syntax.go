@@ -3,7 +3,8 @@
 package rfc8259
 
 import (
-	core "github.com/elimity-com/abnf/core"
+	"github.com/elimity-com/abnf/core"
+
 	"github.com/elimity-com/abnf/operators"
 )
 
@@ -76,7 +77,7 @@ func Char(s []byte) operators.Alternatives {
 				operators.Concat(
 					"%x75 4HEXDIG",
 					operators.Terminal("%x75", []byte{117}),
-					operators.RepeatN("4HEXDIG", 4, core.HEXDIG()),
+					operators.RepeatN("4HEXDIG", '\x04', core.HEXDIG()),
 				),
 			),
 		),
@@ -258,7 +259,7 @@ func Unescaped(s []byte) operators.Alternatives {
 		"unescaped",
 		operators.Range("%x20-21", []byte{32}, []byte{33}),
 		operators.Range("%x23-5B", []byte{35}, []byte{91}),
-		operators.Range("%x5D-10FFFF", []byte{93}, []byte{16, 255, 255}),
+		operators.Range("%x5D-10FFFF", []byte{93}, []byte{255}),
 	)(s)
 }
 

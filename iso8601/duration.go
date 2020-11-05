@@ -3,7 +3,8 @@
 package iso8601
 
 import (
-	core "github.com/elimity-com/abnf/core"
+	"github.com/elimity-com/abnf/core"
+
 	"github.com/elimity-com/abnf/operators"
 )
 

@@ -3,23 +3,24 @@
 package rfc3339
 
 import (
-	core "github.com/elimity-com/abnf/core"
+	"github.com/elimity-com/abnf/core"
+
 	"github.com/elimity-com/abnf/operators"
 )
 
 // date-fullyear = 4DIGIT
 func DateFullyear(s []byte) operators.Alternatives {
-	return operators.RepeatN("date-fullyear", 4, core.DIGIT())(s)
+	return operators.RepeatN("date-fullyear", '\x04', core.DIGIT())(s)
 }
 
 // date-mday = 2DIGIT
 func DateMday(s []byte) operators.Alternatives {
-	return operators.RepeatN("date-mday", 2, core.DIGIT())(s)
+	return operators.RepeatN("date-mday", '\x02', core.DIGIT())(s)
 }
 
 // date-month = 2DIGIT
 func DateMonth(s []byte) operators.Alternatives {
-	return operators.RepeatN("date-month", 2, core.DIGIT())(s)
+	return operators.RepeatN("date-month", '\x02', core.DIGIT())(s)
 }
 
 // date-time = full-date "T" full-time
@@ -68,12 +69,12 @@ func PartialTime(s []byte) operators.Alternatives {
 
 // time-hour = 2DIGIT
 func TimeHour(s []byte) operators.Alternatives {
-	return operators.RepeatN("time-hour", 2, core.DIGIT())(s)
+	return operators.RepeatN("time-hour", '\x02', core.DIGIT())(s)
 }
 
 // time-minute = 2DIGIT
 func TimeMinute(s []byte) operators.Alternatives {
-	return operators.RepeatN("time-minute", 2, core.DIGIT())(s)
+	return operators.RepeatN("time-minute", '\x02', core.DIGIT())(s)
 }
 
 // time-numoffset = ("+" / "-") time-hour ":" time-minute
@@ -111,5 +112,5 @@ func TimeSecfrac(s []byte) operators.Alternatives {
 
 // time-second = 2DIGIT
 func TimeSecond(s []byte) operators.Alternatives {
-	return operators.RepeatN("time-second", 2, core.DIGIT())(s)
+	return operators.RepeatN("time-second", '\x02', core.DIGIT())(s)
 }

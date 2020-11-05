@@ -3,7 +3,8 @@
 package rfc3986
 
 import (
-	core "github.com/elimity-com/abnf/core"
+	"github.com/elimity-com/abnf/core"
+
 	"github.com/elimity-com/abnf/operators"
 )
 
@@ -41,7 +42,7 @@ func IPv6address(s []byte) operators.Alternatives {
 		"IPv6address",
 		operators.Concat(
 			"6( h16 \":\" ) ls32",
-			operators.RepeatN("6( h16 \":\" )", 6, operators.Concat(
+			operators.RepeatN("6( h16 \":\" )", '\x06', operators.Concat(
 				"h16 \":\"",
 				H16,
 				operators.String(":", ":"),
@@ -51,7 +52,7 @@ func IPv6address(s []byte) operators.Alternatives {
 		operators.Concat(
 			"\"::\" 5( h16 \":\" ) ls32",
 			operators.String("::", "::"),
-			operators.RepeatN("5( h16 \":\" )", 5, operators.Concat(
+			operators.RepeatN("5( h16 \":\" )", '\x05', operators.Concat(
 				"h16 \":\"",
 				H16,
 				operators.String(":", ":"),
@@ -62,7 +63,7 @@ func IPv6address(s []byte) operators.Alternatives {
 			"[ h16 ] \"::\" 4( h16 \":\" ) ls32",
 			operators.Optional("[ h16 ]", H16),
 			operators.String("::", "::"),
-			operators.RepeatN("4( h16 \":\" )", 4, operators.Concat(
+			operators.RepeatN("4( h16 \":\" )", '\x04', operators.Concat(
 				"h16 \":\"",
 				H16,
 				operators.String(":", ":"),
@@ -73,7 +74,7 @@ func IPv6address(s []byte) operators.Alternatives {
 			"[ *1( h16 \":\" ) h16 ] \"::\" 3( h16 \":\" ) ls32",
 			operators.Optional("[ *1( h16 \":\" ) h16 ]", operators.Concat(
 				"*1( h16 \":\" ) h16",
-				operators.Repeat("*1( h16 \":\" )", 0, 1, operators.Concat(
+				operators.Repeat("*1( h16 \":\" )", '\x00', '\x01', operators.Concat(
 					"h16 \":\"",
 					H16,
 					operators.String(":", ":"),
@@ -81,7 +82,7 @@ func IPv6address(s []byte) operators.Alternatives {
 				H16,
 			)),
 			operators.String("::", "::"),
-			operators.RepeatN("3( h16 \":\" )", 3, operators.Concat(
+			operators.RepeatN("3( h16 \":\" )", '\x03', operators.Concat(
 				"h16 \":\"",
 				H16,
 				operators.String(":", ":"),
@@ -92,7 +93,7 @@ func IPv6address(s []byte) operators.Alternatives {
 			"[ *2( h16 \":\" ) h16 ] \"::\" 2( h16 \":\" ) ls32",
 			operators.Optional("[ *2( h16 \":\" ) h16 ]", operators.Concat(
 				"*2( h16 \":\" ) h16",
-				operators.Repeat("*2( h16 \":\" )", 0, 2, operators.Concat(
+				operators.Repeat("*2( h16 \":\" )", '\x00', '\x02', operators.Concat(
 					"h16 \":\"",
 					H16,
 					operators.String(":", ":"),
@@ -100,7 +101,7 @@ func IPv6address(s []byte) operators.Alternatives {
 				H16,
 			)),
 			operators.String("::", "::"),
-			operators.RepeatN("2( h16 \":\" )", 2, operators.Concat(
+			operators.RepeatN("2( h16 \":\" )", '\x02', operators.Concat(
 				"h16 \":\"",
 				H16,
 				operators.String(":", ":"),
@@ -111,7 +112,7 @@ func IPv6address(s []byte) operators.Alternatives {
 			"[ *3( h16 \":\" ) h16 ] \"::\" h16 \":\" ls32",
 			operators.Optional("[ *3( h16 \":\" ) h16 ]", operators.Concat(
 				"*3( h16 \":\" ) h16",
-				operators.Repeat("*3( h16 \":\" )", 0, 3, operators.Concat(
+				operators.Repeat("*3( h16 \":\" )", '\x00', '\x03', operators.Concat(
 					"h16 \":\"",
 					H16,
 					operators.String(":", ":"),
@@ -127,7 +128,7 @@ func IPv6address(s []byte) operators.Alternatives {
 			"[ *4( h16 \":\" ) h16 ] \"::\" ls32",
 			operators.Optional("[ *4( h16 \":\" ) h16 ]", operators.Concat(
 				"*4( h16 \":\" ) h16",
-				operators.Repeat("*4( h16 \":\" )", 0, 4, operators.Concat(
+				operators.Repeat("*4( h16 \":\" )", '\x00', '\x04', operators.Concat(
 					"h16 \":\"",
 					H16,
 					operators.String(":", ":"),
@@ -141,7 +142,7 @@ func IPv6address(s []byte) operators.Alternatives {
 			"[ *5( h16 \":\" ) h16 ] \"::\" h16",
 			operators.Optional("[ *5( h16 \":\" ) h16 ]", operators.Concat(
 				"*5( h16 \":\" ) h16",
-				operators.Repeat("*5( h16 \":\" )", 0, 5, operators.Concat(
+				operators.Repeat("*5( h16 \":\" )", '\x00', '\x05', operators.Concat(
 					"h16 \":\"",
 					H16,
 					operators.String(":", ":"),
@@ -155,7 +156,7 @@ func IPv6address(s []byte) operators.Alternatives {
 			"[ *6( h16 \":\" ) h16 ] \"::\"",
 			operators.Optional("[ *6( h16 \":\" ) h16 ]", operators.Concat(
 				"*6( h16 \":\" ) h16",
-				operators.Repeat("*6( h16 \":\" )", 0, 6, operators.Concat(
+				operators.Repeat("*6( h16 \":\" )", '\x00', '\x06', operators.Concat(
 					"h16 \":\"",
 					H16,
 					operators.String(":", ":"),
@@ -258,7 +259,7 @@ func DecOctet(s []byte) operators.Alternatives {
 		operators.Concat(
 			"\"1\" 2DIGIT",
 			operators.String("1", "1"),
-			operators.RepeatN("2DIGIT", 2, core.DIGIT()),
+			operators.RepeatN("2DIGIT", '\x02', core.DIGIT()),
 		),
 		operators.Concat(
 			"\"2\" %x30-34 DIGIT",
@@ -300,7 +301,7 @@ func GenDelims(s []byte) operators.Alternatives {
 
 // h16 = 1*4HEXDIG
 func H16(s []byte) operators.Alternatives {
-	return operators.Repeat("h16", 1, 4, core.HEXDIG())(s)
+	return operators.Repeat("h16", '\x01', '\x04', core.HEXDIG())(s)
 }
 
 // hier-part = "//" authority path-abempty / path-absolute / path-rootless / path-empty
@@ -383,7 +384,7 @@ func PathAbsolute(s []byte) operators.Alternatives {
 
 // path-empty = 0pchar
 func PathEmpty(s []byte) operators.Alternatives {
-	return operators.RepeatN("path-empty", 0, Pchar)(s)
+	return operators.RepeatN("path-empty", '\x00', Pchar)(s)
 }
 
 // path-noscheme = segment-nz-nc *( "/" segment )

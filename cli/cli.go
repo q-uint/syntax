@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"flag"
 	"fmt"
 	"io/ioutil"
@@ -27,10 +28,14 @@ func main() {
 }
 
 func rfc(n int) {
-	raw, err := ioutil.ReadFile(fmt.Sprintf("./abnf/rfc%d.abnf", n))
+	log.Printf("Started generating RFC%d.\n", n)
+
+	rPath := fmt.Sprintf("./abnf/rfc%d.abnf", n)
+	raw, err := ioutil.ReadFile(rPath)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Loaded .abnf file: %s", rPath)
 
 	g := abnf.CodeGenerator{
 		PackageName: fmt.Sprintf("rfc%d", n),
@@ -42,20 +47,24 @@ func rfc(n int) {
 		g.ExternalABNF = externalABNF
 	}
 
-	f := g.GenerateABNFAsAlternatives()
-	if err := ioutil.WriteFile(
-		fmt.Sprintf("./rfc%d/syntax.go", n),
-		[]byte(fmt.Sprintf("%#v", f)), 0644,
-	); err != nil {
+	log.Println("Generating ABNF...")
+	b := &bytes.Buffer{}
+	g.GenerateABNFAsAlternatives(b)
+
+	wPath := fmt.Sprintf("./rfc%d/syntax.go", n)
+	if err := ioutil.WriteFile(wPath, b.Bytes(), 0644); err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Wrote .go file: %s", wPath)
 }
 
 func other(in, out, pkg string, operators ...string) {
+	log.Printf("Started generating %s.\n", strings.ToUpper(pkg))
 	raw, err := ioutil.ReadFile(in)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Loaded .abnf file: %s", in)
 
 	g := abnf.CodeGenerator{
 		PackageName: pkg,
@@ -70,19 +79,21 @@ func other(in, out, pkg string, operators ...string) {
 	}
 	g.ExternalABNF = externalABNF
 
-	f := g.GenerateABNFAsAlternatives()
-	if err := ioutil.WriteFile(
-		out,
-		[]byte(fmt.Sprintf("%#v", f)), 0644,
-	); err != nil {
+	log.Println("Generating ABNF...")
+	b := &bytes.Buffer{}
+	g.GenerateABNFAsAlternatives(b)
+
+	if err := ioutil.WriteFile(out, b.Bytes(), 0644); err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Wrote .go file: %s", out)
 }
 
 var (
 	corePkg = abnf.ExternalABNF{
 		IsOperator:  true,
-		PackageName: "github.com/elimity-com/abnf/core",
+		PackageName: "core",
+		PackagePath: "github.com/elimity-com/abnf/core",
 	}
 
 	coreOperators = map[string]abnf.ExternalABNF{

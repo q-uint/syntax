@@ -3,7 +3,8 @@
 package iso8601
 
 import (
-	core "github.com/elimity-com/abnf/core"
+	"github.com/elimity-com/abnf/core"
+
 	"github.com/elimity-com/abnf/operators"
 )
 
@@ -42,12 +43,12 @@ func TimeFraction(s []byte) operators.Alternatives {
 
 // time-hour = 2DIGIT
 func TimeHour(s []byte) operators.Alternatives {
-	return operators.RepeatN("time-hour", 2, core.DIGIT())(s)
+	return operators.RepeatN("time-hour", '\x02', core.DIGIT())(s)
 }
 
 // time-minute = 2DIGIT
 func TimeMinute(s []byte) operators.Alternatives {
-	return operators.RepeatN("time-minute", 2, core.DIGIT())(s)
+	return operators.RepeatN("time-minute", '\x02', core.DIGIT())(s)
 }
 
 // time-numoffset = ("+" / "-") time-hour [[":"] time-minute]
@@ -70,7 +71,7 @@ func TimeNumoffset(s []byte) operators.Alternatives {
 
 // time-second = 2DIGIT
 func TimeSecond(s []byte) operators.Alternatives {
-	return operators.RepeatN("time-second", 2, core.DIGIT())(s)
+	return operators.RepeatN("time-second", '\x02', core.DIGIT())(s)
 }
 
 // time-zone = "Z" / time-numoffset

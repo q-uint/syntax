@@ -3,7 +3,8 @@
 package iso8601
 
 import (
-	core "github.com/elimity-com/abnf/core"
+	"github.com/elimity-com/abnf/core"
+
 	"github.com/elimity-com/abnf/operators"
 )
 
@@ -23,7 +24,7 @@ func Date(s []byte) operators.Alternatives {
 
 // date-century = 2DIGIT
 func DateCentury(s []byte) operators.Alternatives {
-	return operators.RepeatN("date-century", 2, core.DIGIT())(s)
+	return operators.RepeatN("date-century", '\x02', core.DIGIT())(s)
 }
 
 // date-decade = DIGIT
@@ -42,12 +43,12 @@ func DateFullyear(s []byte) operators.Alternatives {
 
 // date-mday = 2DIGIT
 func DateMday(s []byte) operators.Alternatives {
-	return operators.RepeatN("date-mday", 2, core.DIGIT())(s)
+	return operators.RepeatN("date-mday", '\x02', core.DIGIT())(s)
 }
 
 // date-month = 2DIGIT
 func DateMonth(s []byte) operators.Alternatives {
-	return operators.RepeatN("date-month", 2, core.DIGIT())(s)
+	return operators.RepeatN("date-month", '\x02', core.DIGIT())(s)
 }
 
 // date-subdecade = DIGIT
@@ -62,12 +63,12 @@ func DateWday(s []byte) operators.Alternatives {
 
 // date-week = 2DIGIT
 func DateWeek(s []byte) operators.Alternatives {
-	return operators.RepeatN("date-week", 2, core.DIGIT())(s)
+	return operators.RepeatN("date-week", '\x02', core.DIGIT())(s)
 }
 
 // date-yday = 3DIGIT
 func DateYday(s []byte) operators.Alternatives {
-	return operators.RepeatN("date-yday", 3, core.DIGIT())(s)
+	return operators.RepeatN("date-yday", '\x03', core.DIGIT())(s)
 }
 
 // date-year = date-decade date-subdecade

@@ -1,4 +1,4 @@
-package main
+package syntax
 
 import "github.com/elimity-com/abnf/operators"
 

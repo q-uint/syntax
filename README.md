@@ -20,9 +20,9 @@ if !IsValid(rfc3339.DateTime, "1985-04-12T23:20:50.52Z") {
 
 ##### CLI
 ```shell script
-go run cli.go -rfc="3339"
+go run cli/cli.go -rfc=3339
 ```
 
 ```shell script
-go run cli.go -in="./abnf/iso8601_date.abnf" -out="./iso8601/date.go" -pkg="iso8601" -core="DIGIT"  
+go run cli/cli.go -in="./abnf/iso8601_date.abnf" -out="./iso8601/date.go" -pkg="iso8601" -core="DIGIT"
 ```
